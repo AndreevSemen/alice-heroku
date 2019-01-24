@@ -44,9 +44,9 @@ void CryptoCallback(const Alice::Request& request,
             std::string text = GetText(originalUtterance);
             if (prefix == "encry")
             {
-                text = "Encrypting" // Encryption(text, key);
+                text = "Encrypting"; // Encryption(text, key);
             } else if (prefix == "decry") {
-                text = "Decrypting" // Decryption(text, key);
+                text = "Decrypting"; // Decryption(text, key);
             }
             response.SetText(text);
         }
