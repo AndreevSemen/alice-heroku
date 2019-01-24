@@ -47,6 +47,9 @@ add_executable(websocket-chat-server
   source/Card.cpp
   source/ButtonPicture.cpp
   source/main.cpp
+  source/modules.cpp
+  source/encryption.cpp
+  source/decryption.cpp
 )
 
 target_include_directories(alice_tests PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/includes)
