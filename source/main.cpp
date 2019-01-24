@@ -54,8 +54,8 @@ void CryptoCallback(const Alice::Request& request,
 int main()
 {
     Skill s;
-    s.setCallback(CryptoCallback);
-    s.run();
+    s.SetCallback(CryptoCallback);
+    s.Run();
     return 0;
 }
 
