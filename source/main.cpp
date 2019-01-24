@@ -24,6 +24,7 @@ void CryptoCallback(const Alice::Request& request,
                     "Чтобы расшифровать ранее зашифрованный текст, введите ключ, "
                     "аналогично, как для шифрования, и выданый при шифровании текст.";
             Alice::Button endingSessionButton("Пока!", {"end"}, false);
+            response.PushButton(endingSessionButton);
         } else {
             title = "Выберете действие с помощью соответсвующей кнопки";
             Alice::Button encryptionButton("Шифруй", {"encry " + request.Command()}, true);
@@ -43,9 +44,9 @@ void CryptoCallback(const Alice::Request& request,
             std::string text = GetText(originalUtterance);
             if (prefix == "encry")
             {
-                text = Encryption(text, key);
+                text = "Encrypting" // Encryption(text, key);
             } else if (prefix == "decry") {
-                text = Decryption(text, key);
+                text = "Decrypting" // Decryption(text, key);
             }
             response.SetText(text);
         }
