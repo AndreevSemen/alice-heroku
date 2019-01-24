@@ -22,7 +22,7 @@ std::string Encryption(std::string& text, const __uint32_t key)
         CropText(source);
         __uint32_t secondBlock = Get32bits(source);
         CropText(source);
-        for (size_t round = 0; round < N; round++)
+        for (size_t round = 0; round < 1; round++) // TODO: please, fix me.
         {
             EncryptionAlgorithm(firstBlock, secondBlock, key);
             EncryptionAlgorithm(secondBlock, firstBlock, key);
