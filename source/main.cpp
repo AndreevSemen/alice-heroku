@@ -37,14 +37,15 @@ void CryptoCallback(const Alice::Request& request,
         {
             response.SetEndSession(true);
         } else {
-            std::string prefix = GetPrefix(request.OriginalUtterance());
-            __uint32_t key = GetKey(request.OriginalUtterance());
-            std::string text = GetText(request.OriginalUtterance());
+            std::string originalUtterance = request.OriginalUtterance();
+            std::string prefix = GetPrefix(originalUtterance);
+            __uint32_t key = GetKey(originalUtterance);
+            std::string text = GetText(originalUtterance);
             if (prefix == "encry")
             {
-                Encryption(text, key);
+                text = Encryption(text, key);
             } else if (prefix == "decry") {
-                Decryption(text, key);
+                text = Decryption(text, key);
             }
             response.SetText(text);
         }
@@ -80,7 +81,7 @@ __uint32_t GetKey(const std::string& json)
     std::stringstream stream;
     for (size_t i = 0; i < 8; ++index, ++i)
     {
-        stream << std::hex << json[index];
+        stream << json[index];
     }
     __uint32_t key = 0;
     stream >> key;
