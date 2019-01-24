@@ -20,7 +20,7 @@ std::string Decryption(std::string& cryptoText, const __uint32_t key)
         CropHexText(cryptoText);
         __uint32_t secondBlock = Get32bitsFromHexText(cryptoText);
         CropHexText(cryptoText);
-        for (size_t round = 0; round < 1; round++) // TODO: CHANGE IT
+        for (size_t round = 0; round < N; round++)
         {
             DecryptionAlgorithm(firstBlock, secondBlock, key);
             DecryptionAlgorithm(secondBlock, firstBlock, key);
