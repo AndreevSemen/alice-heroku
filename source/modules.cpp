@@ -1,7 +1,7 @@
 // Copyright 2019 AndreevSemen
 #include <modules.hpp>
 
-void MOD(__int64_t& value, const __uint32_t module);
+__int64_t MOD(__int64_t& value, const __uint32_t module);
 
 __uint32_t XOR(const __uint32_t block, const __uint32_t key)
 {
