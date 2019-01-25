@@ -34,14 +34,14 @@ void CryptoCallback(const Alice::Request& request,
         }
         response.SetText(title);
     } else {
-        if (request.OriginalUtterance() == "end")
+        if (request.Payload().dump() == "end")
         {
             response.SetEndSession(true);
         } else {
-            std::string originalUtterance = request.OriginalUtterance();
-            std::string prefix = GetPrefix(originalUtterance);
-            __uint32_t key = GetKey(originalUtterance);
-            std::string text = GetText(originalUtterance);
+            std::string json = request.Payload().dump();
+            std::string prefix = GetPrefix(json);
+            __uint32_t key = GetKey(json);
+            std::string text = GetText(json);
             if (prefix == "encry")
             {
                 text = Encryption(text, key);
