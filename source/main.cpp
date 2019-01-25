@@ -93,7 +93,7 @@ std::string GetText(const std::string& json)
     for (;json[index] != ' '; ++index);
     ++index;
     for (size_t i = 0; i < 8; ++index, ++i);
-    for (;json[index] != '"'; ++index)
+    for (;json[index] != 0; ++index)
     {
         text += json[index];
     }
