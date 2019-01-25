@@ -64,7 +64,7 @@ int main()
 std::string GetPrefix(const std::string& json)
 {
     std::string prefix;
-    for (size_t i = 0; json[i] != ' '; ++i)
+    for (size_t i = 2; json[i] != ' '; ++i)
     {
         prefix += json[i];
     }
@@ -93,7 +93,7 @@ std::string GetText(const std::string& json)
     for (;json[index] != ' '; ++index);
     ++index;
     for (size_t i = 0; i < 8; ++index, ++i);
-    for (;json[index] != 0; ++index)
+    for (;json[index] != '"'; ++index)
     {
         text += json[index];
     }
