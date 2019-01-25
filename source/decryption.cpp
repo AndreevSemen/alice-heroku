@@ -77,11 +77,9 @@ std::string IntToString(__uint32_t value)
 void FormatString(std::string& str)
 {
     std::string formated;
-    size_t i = 0;
-    while (str[i])
+    while (size_t i = 0; str[i]; ++i)
     {
         formated += str[i];
-        i++;
     }
     str = formated;
 }

@@ -11,7 +11,7 @@ __uint32_t GetKey(const std::string&);
 std::string GetText(const std::string&);
 
 void CryptoCallback(const Alice::Request& request,
-                    Alice::Response& response)
+                          Alice::Response& response)
 {
     if (request.RequestType() == Alice::Request::Type::SimpleUtterance)
     {
@@ -27,8 +27,12 @@ void CryptoCallback(const Alice::Request& request,
             response.PushButton(endingSessionButton);
         } else {
             title = "Выберете действие с помощью соответсвующей кнопки";
-            Alice::Button encryptionButton("Шифруй", {"encry " + request.Command()}, true);
-            Alice::Button decryptionButton("Расшифровывай", {"decry " + request.Command()}, true);
+            Alice::Button encryptionButton("Шифруй",
+                                           {"encry " + request.Command()},
+                                           true);
+            Alice::Button decryptionButton("Расшифровывай",
+                                           {"decry " + request.Command()},
+                                           true);
             response.PushButton(encryptionButton);
             response.PushButton(decryptionButton);
         }
@@ -73,6 +77,7 @@ std::string GetPrefix(const std::string& json)
 
 __uint32_t GetKey(const std::string& json)
 {
+    __uint32_t key = 0;
     size_t index = 0;
     for (;json[index] != ' '; ++index);
     ++index;
@@ -81,7 +86,6 @@ __uint32_t GetKey(const std::string& json)
     {
         stream << std::hex << json[index];
     }
-    __uint32_t key = 0;
     stream >> key;
     return key;
 }
