@@ -56,7 +56,8 @@ void CryptoCallback(const Alice::Request& request,
     }
     catch (std::exception& e)
     {
-        std::string title = "Thrown: " + e.what();
+        std::string title = "Thrown: ";
+        title += e.what();
         response.SetText(title);
     }
 }
