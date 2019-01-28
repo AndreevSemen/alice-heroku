@@ -1,8 +1,6 @@
 // Copyright 2019 AndreevSemen
 #include <encryption.hpp>
 
-void FormatText(std::string& text);
-
 __uint32_t Get32bits(std::string& text);
 
 void CropText(std::string& text);
@@ -14,7 +12,6 @@ std::string IntToHexStr(const __uint32_t value);
 std::string Encryption(std::string& text, const __uint32_t key)
 {
     std::string source = text;
-    FormatText(source);
     std::string cryptoText;
     while (!source.empty())
     {
@@ -31,18 +28,6 @@ std::string Encryption(std::string& text, const __uint32_t key)
         cryptoText += IntToHexStr(secondBlock);
     }
     return cryptoText;
-}
-
-void FormatText(std::string& text)
-{
-    if (text.size()%(BLOCK_SIZE/8) != 0)
-    {
-        size_t numOfNeededSymbols = text.size()%(BLOCK_SIZE/8);
-        for (size_t len = 0; len <= numOfNeededSymbols; len++)
-        {
-            text[text.size() + len] = 0;
-        }
-    }
 }
 
 __uint32_t Get32bits(std::string& text)

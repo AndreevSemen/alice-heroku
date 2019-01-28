@@ -9,8 +9,6 @@ void DecryptionAlgorithm(__uint32_t& firstBlock, __uint32_t& secondBlock, const 
 
 std::string IntToString(__uint32_t value);
 
-void FormatString(std::string& string);
-
 std::string Decryption(std::string& cryptoText, const __uint32_t key)
 {
     std::string openText;
@@ -28,7 +26,6 @@ std::string Decryption(std::string& cryptoText, const __uint32_t key)
         openText += IntToString(firstBlock);
         openText += IntToString(secondBlock);
     }
-    FormatString(openText);
     return openText;
 }
 
@@ -74,12 +71,3 @@ std::string IntToString(__uint32_t value)
     return str;
 }
 
-void FormatString(std::string& str)
-{
-    std::string formated;
-    for (size_t i = 0; str[i]; ++i)
-    {
-        formated += str[i];
-    }
-    str = formated;
-}
